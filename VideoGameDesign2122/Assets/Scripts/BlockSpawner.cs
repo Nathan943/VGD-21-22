@@ -8,7 +8,10 @@ public class BlockSpawner : MonoBehaviour
     public GameObject[] blocks;
     GameObject block;
     bool canSpawn = true;
-    public float fallspeed = 1.5f;
+    public float fallspeed;
+
+    //Set up the variable that stores the information of what the raycast hit (More below)
+    RaycastHit hitInfo;
 
     // Update is called once per frame
     void Update()
@@ -30,10 +33,13 @@ public class BlockSpawner : MonoBehaviour
         //Creates a clone of the random block at the top of the game
         GameObject cloneobj = Instantiate(block, new Vector3(0f, 10.5f, 0f), Quaternion.identity);
 
-        //This moves the clone block down the game until it reaches the bottom
-        for (float i = 10.5f; i > 0.5f; i--)
+        //This uses a feature called a Raycast, which is an invisible line going in a certain direction that can detect if it collides with something
+        //It is checking and moving down if there isn't an object below it, otherwise it stops moving and continues on
+        while (!Physics.Raycast(cloneobj.transform.position, new Vector3(0f, -1f, 0f), out hitInfo, 1f))
         {
+            //Move block down by 1 unit and wait to fall again
             cloneobj.transform.Translate(transform.position.x, transform.position.y - 1f, transform.position.z);
+
             yield return new WaitForSeconds(fallspeed);
         }
 
