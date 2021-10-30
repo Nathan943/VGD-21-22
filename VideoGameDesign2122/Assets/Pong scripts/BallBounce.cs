@@ -4,30 +4,68 @@ using UnityEngine;
 
 public class BallBounce : MonoBehaviour
 {
-    //Get rigidbody for movement and have a speed variable as well as direction variable
-    Rigidbody2D rb;
-    public float ballSpeed = 100;
-    Vector2 direction;
-    public Transform ghostball;
-    [HideInInspector] public Transform cloneobj;
-
-    public Ray dirray;
+    //Variables for the rigidbody, ball speed, 3 second delay at the start, and when to up the speed of the ball
+    [HideInInspector] public Rigidbody2D rb;
+    public float ballSpeed;
+    public bool start = false;
+    bool upspeed = true;
 
     private void Start()
     {
-        //Get the rigidbody on the ball
+        //Get the rigidbody
         rb = GetComponent<Rigidbody2D>();
-
-        //Choose a random direction to go
-        direction = new Vector2(Random.Range(0f, 0f), Random.Range(-1f, -1f));
-
-        //Move in that direction at Time.deltaTime (Fixed framerate) and multiply by the speed variable
-        rb.velocity = direction * ballSpeed * Time.deltaTime;
+        //Start 3 second countdown for ball
+        StartCoroutine(Wait_Seconds());
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void Update()
     {
-        cloneobj = Instantiate(ghostball);
-        cloneobj.position = rb.velocity;
+        //For testing
+        if (rb != null)
+        {
+            Debug.Log(rb.velocity.sqrMagnitude);
+        }
+
+        //After it is set to false
+        if (upspeed == false)
+        {
+            //Start speed up countdown
+            StartCoroutine(SpeedUp());
+        }
+    }
+
+    IEnumerator Wait_Seconds()
+    {
+        //Wait 3 secs
+        yield return new WaitForSeconds(3);
+
+        //Add force to move the ball
+        rb.AddForce(new Vector2(Random.Range(0.1f, -1), Random.Range(-1f, 1)).normalized * ballSpeed * Time.deltaTime);
+
+        //Set start to true so AI starts moving
+        start = true;
+
+        //Set upspeed to false so the speecing up starts
+        upspeed = false;
+    }
+
+    IEnumerator SpeedUp()
+    {
+        //Stop countdown until this loop is finished
+        upspeed = true;
+
+        //Wait for 5 secss
+        yield return new WaitForSeconds(5f);
+
+        //Get the direction that the ball is travelling by taking two points at different times and connecting them
+        Vector2 curpos = transform.position;
+        yield return new WaitForSeconds(0.1f);
+        Vector2 newpos = transform.position;
+
+        //Add a bit more force in the direction of movement to speed up
+        rb.AddForce((newpos - curpos).normalized * (ballSpeed/25) * Time.deltaTime);
+
+        //Restart this countdown loop
+        upspeed = false;
     }
 }
