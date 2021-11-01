@@ -11,37 +11,50 @@ public class AIPaddle : MonoBehaviour
     void Update()
     {
         //If the balls x position is greater than paddles position (The random numbers are to make it easier for the player)
-        if ((bouncescript.rb.transform.position.x * Random.Range(0.8f, 1.2f)) > transform.position.x)
+        if (bouncescript.start)
         {
-            //If the ball is near the Ai's side
-            if (bouncescript.rb.transform.position.y > -1)
+            if ((bouncescript.rb.transform.position.x > transform.position.x - 0.2f) || (bouncescript.rb.transform.position.x > transform.position.x + 0.2f))
             {
-                MovePaddleRight();
+                //If the ball is near the Ai's side
+                if (bouncescript.rb.transform.position.y > -0.75)
+                {
+                    MovePaddleRight();
+                }
             }
-        }
-        else if (bouncescript.rb.transform.position.y > -1)
-        {
-            MovePaddleLeft();
+            else if (bouncescript.rb.transform.position.y > -0.75)
+            {
+                MovePaddleLeft();
+            }
         }
     }
 
     void MovePaddleRight()
     {
         //If it isn't across the middle
-        if (transform.position.y > 0.5)
+        if (transform.position.y > 0.46)
         {
             //Rotate right
             transform.RotateAround(new Vector3(0f, 0f, 0f), Vector3.back, airotSpeed * Time.deltaTime);
+
+            if (transform.position.y <= 0.46)
+            {
+                transform.RotateAround(new Vector3(0f, 0f, 0f), Vector3.forward, airotSpeed * Time.deltaTime);
+            }
         }
     }
 
     void MovePaddleLeft()
     {
         //If it isn't across the middle
-        if (transform.position.y > 0.5)
+        if (transform.position.y > 0.46)
         {
             //Rotate left
             transform.RotateAround(new Vector3(0f, 0f, 0f), Vector3.forward, airotSpeed * Time.deltaTime);
+
+            if (transform.position.y <= 0.46)
+            {
+                transform.RotateAround(new Vector3(0f, 0f, 0f), Vector3.back, airotSpeed * Time.deltaTime);
+            }
         }
     }
 }
