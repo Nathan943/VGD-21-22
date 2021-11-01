@@ -263,8 +263,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -100
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_SortingOrder: -1000
+  m_Sprite: {fileID: 21300000, guid: 7dc09e0af6352134882c8636ff20ce13, type: 3}
   m_Color: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -284,7 +284,7 @@ Transform:
   m_GameObject: {fileID: 366453758}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 60, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -388,7 +388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bouncescript: {fileID: 1588068371}
-  airotSpeed: 100
+  airotSpeed: 150
 --- !u!61 &386349201
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -657,7 +657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 0.9386792, b: 0.9386792, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -697,7 +697,7 @@ GameObject:
   - component: {fileID: 885979887}
   - component: {fileID: 885979886}
   m_Layer: 0
-  m_Name: Circle (1)
+  m_Name: MIldecirle of doom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -744,15 +744,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -9
-  m_Sprite: {fileID: 21300000, guid: bdf131bfa3b907e4fa29e76cec9e1d54, type: 3}
-  m_Color: {r: 0.38823533, g: 0.38823533, b: 0.38823533, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 664f75932dc01574d8eac87b752d41c2, type: 3}
+  m_Color: {r: 0.22352943, g: 0.227451, b: 0.23137257, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 15, y: 15}
+  m_Size: {x: 14.4, y: 14.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &885979887
@@ -764,7 +764,7 @@ Transform:
   m_GameObject: {fileID: 885979885}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.21, y: 0.21, z: 1}
+  m_LocalScale: {x: 0.215, y: 0.215, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -877,7 +877,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 7fa53f78660bb6e46b9177b0019d594c, type: 3}
-  m_Color: {r: 0.38823533, g: 0.38823533, b: 0.38823533, a: 1}
+  m_Color: {r: 0.22352943, g: 0.227451, b: 0.23137257, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1028,15 +1028,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bdf131bfa3b907e4fa29e76cec9e1d54, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0778eee51a933b74f91785302ddb6fd8, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 15, y: 15}
+  m_Size: {x: 60.000004, y: 60.000004}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1588068370
@@ -1048,7 +1048,7 @@ Transform:
   m_GameObject: {fileID: 1588068368}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.1}
+  m_LocalScale: {x: 0.002, y: 0.002, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -1157,7 +1157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1264,7 +1264,7 @@ Transform:
   m_GameObject: {fileID: 1922380994}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.26, y: 0.26, z: 0.25}
+  m_LocalScale: {x: 0.26, y: 0.26, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -1348,7 +1348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99440d2dfcba01641a1e4fb443d489b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 200
+  rotateSpeed: 150
 --- !u!212 &1981722404
 SpriteRenderer:
   m_ObjectHideFlags: 0
