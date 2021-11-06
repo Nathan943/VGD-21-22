@@ -5913,7 +5913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  ballSpeed: 25000
+  ballSpeed: 100
   start: 0
   aiText: {fileID: 1657906345}
   playerText: {fileID: 878982173}
@@ -7048,7 +7048,7 @@ ParticleSystem:
     m_UseMeshMaterialIndex: 0
     m_UseMeshColors: 1
     alignToDirection: 0
-    m_Texture: {fileID: 0}
+    m_Texture: {fileID: 2800000, guid: 664f75932dc01574d8eac87b752d41c2, type: 3}
     m_TextureClipChannel: 3
     m_TextureClipThreshold: 0
     m_TextureUVChannel: 0
