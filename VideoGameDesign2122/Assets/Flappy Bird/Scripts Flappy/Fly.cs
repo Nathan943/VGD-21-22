@@ -42,8 +42,6 @@ public class Fly : MonoBehaviour
             {
                 transform.Translate(-transform.right * moveSpeed * 0.001f);
             }
-
-            transform.Translate(transform.forward * forwardSpeed * 0.001f);
         }
     }
 
