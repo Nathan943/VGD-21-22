@@ -12,17 +12,18 @@ public class AIPaddle : MonoBehaviour
 
     void Update()
     {
-        //If the balls x position is greater than paddles position (The random numbers are to make it easier for the player)
         if (bouncescript.start)
         {
+            //If the balls x position is greater than paddles position (The difficulty variable can be adjusted in Inspector)
             if (bouncescript.rb.transform.position.x > transform.position.x + difficulty || bouncescript.rb.transform.position.x > transform.position.x - difficulty)
             {
-                //If the ball is near the Ai's side
+                //If the ball is close to AI's side
                 if (bouncescript.rb.transform.position.y > ballTrackingHeight)
                 {
                     MovePaddleRight();
                 }
             }
+            //Otherwise ball is on left side of AI
             else if (bouncescript.rb.transform.position.y > ballTrackingHeight)
             {
                 MovePaddleLeft();
@@ -32,14 +33,16 @@ public class AIPaddle : MonoBehaviour
 
     void MovePaddleRight()
     {
-        //If it isn't across the middle
+        //If it isn't across the middle line
         if (transform.position.y > 0.46)
         {
             //Rotate right
             transform.RotateAround(new Vector3(0f, 0f, 0f), Vector3.back, airotSpeed * Time.deltaTime);
 
+            //If paddle is past middle line
             if (transform.position.y <= 0.46)
             {
+                //Counterrotate
                 transform.RotateAround(new Vector3(0f, 0f, 0f), Vector3.forward, airotSpeed * Time.deltaTime);
             }
         }
@@ -53,8 +56,10 @@ public class AIPaddle : MonoBehaviour
             //Rotate left
             transform.RotateAround(new Vector3(0f, 0f, 0f), Vector3.forward, airotSpeed * Time.deltaTime);
 
+            //If paddle is past middle line
             if (transform.position.y <= 0.46)
             {
+                //Counterrotate
                 transform.RotateAround(new Vector3(0f, 0f, 0f), Vector3.back, airotSpeed * Time.deltaTime);
             }
         }

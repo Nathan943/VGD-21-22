@@ -14,8 +14,10 @@ public class RotatePaddle : MonoBehaviour
         {
             transform.RotateAround(new Vector3(0f, 0f, 0f), Vector3.forward, rotateSpeed * Time.deltaTime);
 
+            //If above the middle line
             if (transform.position.y >= -0.46)
             {
+                //Counterrotate
                 transform.RotateAround(new Vector3(0f, 0f, 0f), Vector3.back, rotateSpeed * Time.deltaTime);
             }
         }
@@ -25,8 +27,10 @@ public class RotatePaddle : MonoBehaviour
         {
             transform.RotateAround(new Vector3(0f, 0f, 0f), Vector3.back, rotateSpeed * Time.deltaTime);
 
+            //If above the middle line
             if (transform.position.y >= -0.46)
             {
+                //Counterrotate
                 transform.RotateAround(new Vector3(0f, 0f, 0f), Vector3.forward, rotateSpeed * Time.deltaTime);
             }
         }
