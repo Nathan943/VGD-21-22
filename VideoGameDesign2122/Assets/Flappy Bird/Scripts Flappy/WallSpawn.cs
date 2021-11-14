@@ -23,7 +23,7 @@ public class WallSpawn : MonoBehaviour
     {
         spawnNew = false;
 
-        Instantiate(walls[Random.Range(0, walls.Length)], Vector3.zero, transform.rotation);
+        Instantiate(walls[Random.Range(0, walls.Length)], transform.position, transform.rotation);
 
         yield return new WaitForSeconds(secondsBetweenWalls);
 

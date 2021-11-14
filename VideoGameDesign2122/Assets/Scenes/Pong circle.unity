@@ -307,7 +307,7 @@ GameObject:
   - component: {fileID: 386349203}
   m_Layer: 0
   m_Name: AIPaddle
-  m_TagString: Untagged
+  m_TagString: Paddle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -391,7 +391,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bouncescript: {fileID: 1588068371}
-  airotSpeed: 175
+  airotSpeed: 225
+  ballTrackingHeight: -1.5
+  difficulty: 0.2
 --- !u!61 &386349201
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6274,7 +6276,7 @@ GameObject:
   - component: {fileID: 1981722406}
   m_Layer: 0
   m_Name: Paddle
-  m_TagString: Untagged
+  m_TagString: Paddle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

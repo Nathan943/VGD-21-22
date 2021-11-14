@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WallMove : MonoBehaviour
 {
-    public Fly flyscript;
+    Fly flyscript;
 
     private void Start()
     {
@@ -13,6 +13,14 @@ public class WallMove : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(transform.forward * flyscript.forwardSpeed * -0.1f);
+        if (!flyscript.crashed)
+        {
+            transform.Translate(transform.forward * flyscript.forwardSpeed * -0.05f);
+
+            if (transform.position.z <= -60)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 }

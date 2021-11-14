@@ -7,21 +7,23 @@ public class AIPaddle : MonoBehaviour
     //Get the ball bounce script and the speed the AI rotates at
     public BallBounce bouncescript;
     public float airotSpeed;
+    public float ballTrackingHeight;
+    public float difficulty;
 
     void Update()
     {
         //If the balls x position is greater than paddles position (The random numbers are to make it easier for the player)
         if (bouncescript.start)
         {
-            if ((bouncescript.rb.transform.position.x > transform.position.x - 0.2f) || (bouncescript.rb.transform.position.x > transform.position.x + 0.2f))
+            if (bouncescript.rb.transform.position.x > transform.position.x + difficulty || bouncescript.rb.transform.position.x > transform.position.x - difficulty)
             {
                 //If the ball is near the Ai's side
-                if (bouncescript.rb.transform.position.y > -0.75)
+                if (bouncescript.rb.transform.position.y > ballTrackingHeight)
                 {
                     MovePaddleRight();
                 }
             }
-            else if (bouncescript.rb.transform.position.y > -0.75)
+            else if (bouncescript.rb.transform.position.y > ballTrackingHeight)
             {
                 MovePaddleLeft();
             }

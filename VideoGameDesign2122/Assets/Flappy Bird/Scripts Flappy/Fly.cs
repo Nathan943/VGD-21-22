@@ -14,6 +14,8 @@ public class Fly : MonoBehaviour
     public int points = 0;
     bool pointsGiven = false;
 
+    [HideInInspector] public bool crashed = false;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -27,21 +29,27 @@ public class Fly : MonoBehaviour
         Debug.Log(points);
         if (startGame)
         {
-            if (Input.GetKeyDown("w") || Input.GetKeyDown(KeyCode.UpArrow))
+            if ((Input.GetKeyDown("w") || Input.GetKeyDown(KeyCode.UpArrow)) && !crashed)
             {
                 rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
                 rb.AddForce(Vector3.up * flapHeight);
             }
 
-            if (Input.GetKey("d") || Input.GetKey(KeyCode.RightArrow))
+            if ((Input.GetKey("d") || Input.GetKey(KeyCode.RightArrow)) && !crashed)
             {
                 transform.Translate(transform.right * moveSpeed * 0.001f);
             }
 
-            if (Input.GetKey("a") || Input.GetKey(KeyCode.LeftArrow))
+            if ((Input.GetKey("a") || Input.GetKey(KeyCode.LeftArrow)) && !crashed)
             {
                 transform.Translate(-transform.right * moveSpeed * 0.001f);
             }
+        }
+
+        if (!pointsGiven && startGame)
+        {
+            pointsGiven = true;
+            StartCoroutine(GivePoints());
         }
     }
 
@@ -53,19 +61,17 @@ public class Fly : MonoBehaviour
         rb.useGravity = true;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!pointsGiven)
-        {
-            points++;
-            pointsGiven = true;
-            StartCoroutine(GivePoints());
-        }
-    }
-
     IEnumerator GivePoints()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2f);
+        points++;
         pointsGiven = false;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        crashed = true;
+
+        rb.velocity = Vector3.zero;
     }
 }

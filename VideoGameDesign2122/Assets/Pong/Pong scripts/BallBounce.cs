@@ -41,7 +41,7 @@ public class BallBounce : MonoBehaviour
         //For testing
         if (rb != null)
         {
-            Debug.Log(rb.velocity.sqrMagnitude);
+            //Debug.Log(rb.velocity.sqrMagnitude);
         }
 
         //After it is set to false
