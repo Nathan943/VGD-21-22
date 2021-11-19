@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.Audio;
 public class BallBounce : MonoBehaviour
 {
     //Variables
@@ -14,6 +14,8 @@ public class BallBounce : MonoBehaviour
     //Display for scores
     public Text aiText;
     public Text playerText;
+
+    public AudioClip bounce;
 
     //Scores
     int playerScore = 0;
@@ -29,6 +31,8 @@ public class BallBounce : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         //Start 3 second countdown for ball
         StartCoroutine(Wait_Seconds());
+        AudioSource audio = GetComponent<AudioSource>();
+        audio.clip = bounce;
     }
 
     private void Update()
@@ -128,6 +132,10 @@ public class BallBounce : MonoBehaviour
                 playerScore += 1;
                 Respawn();
             }
+        }
+        if (collision.collider.tag == "Paddle")
+        {
+            GetComponent<AudioSource>().Play();
         }
     }
 }
