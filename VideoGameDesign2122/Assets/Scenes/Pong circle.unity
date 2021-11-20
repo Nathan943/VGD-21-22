@@ -6061,6 +6061,7 @@ MonoBehaviour:
   aiText: {fileID: 1657906345}
   playerText: {fileID: 878982173}
   bounce: {fileID: 8300000, guid: f1809f16d176c40449e8fddd75abf60b, type: 3}
+  score: {fileID: 8300000, guid: 10e0499fda87a644eb2fa640bd76e9a4, type: 3}
 --- !u!58 &1588068372
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6108,9 +6109,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f1809f16d176c40449e8fddd75abf60b, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.75
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0

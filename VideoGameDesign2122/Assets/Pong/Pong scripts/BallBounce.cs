@@ -15,7 +15,10 @@ public class BallBounce : MonoBehaviour
     public Text aiText;
     public Text playerText;
 
+    //Audio
     public AudioClip bounce;
+    public AudioClip score;
+    AudioSource audio;
 
     //Scores
     int playerScore = 0;
@@ -31,8 +34,7 @@ public class BallBounce : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         //Start 3 second countdown for ball
         StartCoroutine(Wait_Seconds());
-        AudioSource audio = GetComponent<AudioSource>();
-        audio.clip = bounce;
+        audio = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -46,12 +48,6 @@ public class BallBounce : MonoBehaviour
         //Show player and AI's text in game
         playerText.text = playerScore.ToString();
         aiText.text = aiScore.ToString();
-
-        //For testing
-        if (rb != null)
-        {
-            //Debug.Log(rb.velocity.sqrMagnitude);
-        }
 
         //Will be set to false when game starts, and true when the function inside the if statement is running
         if (upspeed == false)
@@ -90,7 +86,7 @@ public class BallBounce : MonoBehaviour
         Vector2 newpos = transform.position;
 
         //Add a bit more force in the direction of movement to speed up
-        rb.AddForce((newpos - curpos).normalized * (ballSpeed/15));
+        rb.AddForce((newpos - curpos).normalized * (ballSpeed / 10));
 
         //Restart this countdown loop
         upspeed = false;
@@ -98,6 +94,7 @@ public class BallBounce : MonoBehaviour
 
     void Respawn()
     {
+
         //Disable the ball, bring it to the center, and reenable it
         gameObject.SetActive(false);
         transform.position = new Vector2(0, 0);
@@ -133,9 +130,17 @@ public class BallBounce : MonoBehaviour
                 Respawn();
             }
         }
+
+        if (collision.collider.tag == "outside")
+        {
+            audio.clip = score;
+            audio.Play();
+        }
+
         if (collision.collider.tag == "Paddle")
         {
-            GetComponent<AudioSource>().Play();
+            audio.clip = bounce;
+            audio.Play();
         }
     }
 }
