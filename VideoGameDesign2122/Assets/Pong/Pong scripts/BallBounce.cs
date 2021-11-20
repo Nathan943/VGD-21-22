@@ -67,7 +67,7 @@ public class BallBounce : MonoBehaviour
         yield return new WaitForSeconds(3);
 
         //Add force to move the ball
-        rb.AddForce(new Vector2(Random.Range(0.1f, -1), Random.Range(-1f, 1)).normalized * ballSpeed);
+        rb.AddForce(new Vector2(Random.Range(-1, 1), Random.Range(0.1f, -1)).normalized * ballSpeed);
 
         //Set start to true so AI starts moving
         start = true;
