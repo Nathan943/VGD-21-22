@@ -19,7 +19,7 @@ public class WallMove : MonoBehaviour
         if (!flyscript.crashed)
         {
             //Move itself (the wall)
-            transform.Translate(transform.forward * flyscript.forwardSpeed * -0.05f);
+            transform.Translate(-transform.forward * flyscript.forwardSpeed * -0.05f);
 
             //If past the player's view
             if (transform.position.z <= -60)
