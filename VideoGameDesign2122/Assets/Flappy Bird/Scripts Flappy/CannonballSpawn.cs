@@ -12,6 +12,8 @@ public class CannonballSpawn : MonoBehaviour
     public Rigidbody cannonballClone;
     public Transform player;
 
+    int[] choices = {-30, 30};
+
     void Start()
     {
         StartCoroutine(Spawn());
@@ -31,7 +33,7 @@ public class CannonballSpawn : MonoBehaviour
         canSpawn = false;
 
         yield return new WaitForSeconds(seconds);
-        Rigidbody clone = Instantiate(cannonballClone, new Vector3(-30, Random.Range(20, -20), Random.Range(-10, -20)), transform.rotation);
+        Rigidbody clone = Instantiate(cannonballClone, new Vector3(choices[Random.Range(0, choices.Length)], Random.Range(20, -20), Random.Range(-10, -20)), transform.rotation);
 
         clone.transform.LookAt(player);
 

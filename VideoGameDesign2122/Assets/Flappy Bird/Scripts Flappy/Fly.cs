@@ -60,7 +60,7 @@ public class Fly : MonoBehaviour
             }
         }
 
-        //Still working on
+        //Points system
         if (!pointsGiven && startPoints)
         {
             pointsGiven = true;
