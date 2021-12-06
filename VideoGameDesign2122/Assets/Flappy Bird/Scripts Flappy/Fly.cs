@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Fly : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class Fly : MonoBehaviour
 
     public int points = 0;
     bool pointsGiven = false;
+    bool die = false;
 
     public Text pointsText;
     
@@ -92,8 +94,11 @@ public class Fly : MonoBehaviour
     IEnumerator GivePoints()
     {
         yield return new WaitForSeconds(4f);
-        points++;
-        pointsGiven = false;
+        if (!die)
+        {
+            points++;
+            pointsGiven = false;
+        }
     }
 
     //Check for crashing with wall
@@ -101,10 +106,23 @@ public class Fly : MonoBehaviour
     {
         //If so, set crashed to true which makes other parts do stuff
         crashed = true;
-        pointsGiven = true;
 
-        //Stop player from moving
-        rb.velocity = Vector3.zero;
-        //rb.useGravity = false;
+        StartCoroutine(ReloadScene());
+    }
+
+    //Check for crashing with boundaries
+    private void OnTriggerEnter(Collider other)
+    {
+        //If so, set crashed to true which makes other parts do stuff
+        crashed = true;
+
+        StartCoroutine(ReloadScene());
+    }
+
+    IEnumerator ReloadScene()
+    {
+        die = true;
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

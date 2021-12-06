@@ -39,7 +39,7 @@ public class CannonballSpawn : MonoBehaviour
 
         clone.AddForce(clone.transform.forward * cannonSpeed);
 
-        seconds = seconds / cannonballTimeDecreaseRate;
+        seconds = seconds - cannonballTimeDecreaseRate;
 
         canSpawn = true;
     }

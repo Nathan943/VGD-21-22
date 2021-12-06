@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 28c4636664310484ea224b3f8a8a45b3, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -168,9 +168,10 @@ GameObject:
   - component: {fileID: 83581693}
   - component: {fileID: 83581692}
   - component: {fileID: 83581691}
+  - component: {fileID: 83581694}
   m_Layer: 0
   m_Name: TopBoundary
-  m_TagString: Untagged
+  m_TagString: outside
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -239,6 +240,19 @@ Transform:
   m_Father: {fileID: 27853206}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &83581694
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83581690}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 0.99999994}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &113642428
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,9 +264,10 @@ GameObject:
   - component: {fileID: 113642431}
   - component: {fileID: 113642430}
   - component: {fileID: 113642429}
+  - component: {fileID: 113642432}
   m_Layer: 0
   m_Name: BottomBoundary
-  m_TagString: Untagged
+  m_TagString: outside
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -321,6 +336,19 @@ Transform:
   m_Father: {fileID: 27853206}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &113642432
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113642428}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 0.99999994}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &680337651
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,8 +393,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seconds: 5
-  cannonballTimeDecreaseRate: 1.2
-  cannonSpeed: 1000
+  cannonballTimeDecreaseRate: 0.1
+  cannonSpeed: 1500
   cannonballClone: {fileID: 1432724472420618557, guid: f5b4dd50ddc6da84ebb27e59042392de, type: 3}
   player: {fileID: 1808271989}
 --- !u!1 &981412886
@@ -701,9 +729,10 @@ GameObject:
   - component: {fileID: 1647208613}
   - component: {fileID: 1647208612}
   - component: {fileID: 1647208611}
+  - component: {fileID: 1647208614}
   m_Layer: 0
   m_Name: RightBoundary
-  m_TagString: Untagged
+  m_TagString: outside
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -772,6 +801,19 @@ Transform:
   m_Father: {fileID: 27853206}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!65 &1647208614
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647208610}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000002, y: 1.0000002, z: 0.99999994}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1712382984
 GameObject:
   m_ObjectHideFlags: 0
@@ -834,9 +876,10 @@ GameObject:
   - component: {fileID: 1795263796}
   - component: {fileID: 1795263795}
   - component: {fileID: 1795263794}
+  - component: {fileID: 1795263797}
   m_Layer: 0
   m_Name: LeftBoundary
-  m_TagString: Untagged
+  m_TagString: outside
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -905,6 +948,19 @@ Transform:
   m_Father: {fileID: 27853206}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!65 &1795263797
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795263793}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000002, y: 1.0000002, z: 0.99999994}
+  m_Center: {x: 0, y: -0.0000076293945, z: 0}
 --- !u!1 &1808271983
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,8 +1028,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1.5}
-  m_Center: {x: 0, y: 0, z: 0.5}
+  m_Size: {x: 1, y: 1, z: 1.2}
+  m_Center: {x: 0, y: 0, z: 0.2}
 --- !u!23 &1808271987
 MeshRenderer:
   m_ObjectHideFlags: 0
