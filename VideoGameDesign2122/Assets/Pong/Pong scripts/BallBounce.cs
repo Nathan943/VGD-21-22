@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
+
 public class BallBounce : MonoBehaviour
 {
     //Variables
@@ -23,6 +24,7 @@ public class BallBounce : MonoBehaviour
     //Scores
     int playerScore = 0;
     int aiScore = 0;
+    public int winningScore = 3;
 
     private void Start()
     {
@@ -39,10 +41,13 @@ public class BallBounce : MonoBehaviour
 
     private void Update()
     {
-        //If either score is equal to 7
-        if (playerScore == 7 || aiScore == 7)
+        //If either score is equal to winning score variable
+        if (playerScore == winningScore)
         {
-            //Go to the next scene
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        } else if (aiScore == winningScore)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         //Show player and AI's text in game

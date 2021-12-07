@@ -21,6 +21,10 @@ public class Fly : MonoBehaviour
     bool die = false;
 
     public Text pointsText;
+
+    public AudioClip flap;
+    public AudioClip crash;
+    AudioSource audio;
     
 
     [HideInInspector] public bool crashed = false;
@@ -30,6 +34,7 @@ public class Fly : MonoBehaviour
         //Get rigidbody and start game countdown
         rb = GetComponent<Rigidbody>();
         StartCoroutine(Countdown());
+        audio = GetComponentInChildren<AudioSource>();
     }
 
     void Update()
@@ -42,6 +47,9 @@ public class Fly : MonoBehaviour
             //Check if keys are pressed and if you haven't crashed
             if ((Input.GetKeyDown("w") || Input.GetKeyDown(KeyCode.UpArrow)) && !crashed)
             {
+                audio.clip = flap;
+                audio.Play();
+
                 //Stop falling
                 rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
 
@@ -81,10 +89,10 @@ public class Fly : MonoBehaviour
     IEnumerator Countdown()
     {
         rb.useGravity = false;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1.5f);
         startGame = true;
         rb.useGravity = true;
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(4.5f);
         startPoints = true;
         points++;
 
@@ -93,7 +101,7 @@ public class Fly : MonoBehaviour
     //Still working on
     IEnumerator GivePoints()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(3.3f);
         if (!die)
         {
             points++;
@@ -104,25 +112,28 @@ public class Fly : MonoBehaviour
     //Check for crashing with wall
     private void OnCollisionEnter(Collision collision)
     {
-        //If so, set crashed to true which makes other parts do stuff
-        crashed = true;
-
         StartCoroutine(ReloadScene());
     }
 
     //Check for crashing with boundaries
     private void OnTriggerEnter(Collider other)
     {
-        //If so, set crashed to true which makes other parts do stuff
-        crashed = true;
+        rb.velocity = Vector3.zero;
 
         StartCoroutine(ReloadScene());
     }
 
     IEnumerator ReloadScene()
     {
-        die = true;
-        yield return new WaitForSeconds(5);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (crashed == false)
+        {
+            audio.clip = crash;
+            audio.Play();
+
+            crashed = true;
+            die = true;
+            yield return new WaitForSeconds(3);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }
