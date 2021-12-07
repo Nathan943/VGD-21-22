@@ -92,7 +92,7 @@ public class Fly : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         startGame = true;
         rb.useGravity = true;
-        yield return new WaitForSeconds(4.5f);
+        yield return new WaitForSeconds(4f);
         startPoints = true;
         points++;
 
@@ -101,7 +101,7 @@ public class Fly : MonoBehaviour
     //Still working on
     IEnumerator GivePoints()
     {
-        yield return new WaitForSeconds(3.3f);
+        yield return new WaitForSeconds(3f);
         if (!die)
         {
             points++;

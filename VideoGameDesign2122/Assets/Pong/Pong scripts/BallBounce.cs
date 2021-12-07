@@ -26,6 +26,8 @@ public class BallBounce : MonoBehaviour
     int aiScore = 0;
     public int winningScore = 3;
 
+    public Animator transition;
+
     private void Start()
     {
         //Show default scores
@@ -44,10 +46,10 @@ public class BallBounce : MonoBehaviour
         //If either score is equal to winning score variable
         if (playerScore == winningScore)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            StartCoroutine(NextScene(SceneManager.GetActiveScene().buildIndex + 1));
         } else if (aiScore == winningScore)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            StartCoroutine(NextScene(SceneManager.GetActiveScene().buildIndex));
         }
 
         //Show player and AI's text in game
@@ -95,6 +97,15 @@ public class BallBounce : MonoBehaviour
 
         //Restart this countdown loop
         upspeed = false;
+    }
+
+    IEnumerator NextScene(int levelIndex)
+    {
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSeconds(1);
+
+        SceneManager.LoadScene(levelIndex);
     }
 
     void Respawn()

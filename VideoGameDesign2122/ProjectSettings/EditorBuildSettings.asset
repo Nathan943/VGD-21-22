@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: c030cbb63bdabf94fb18f26df45de75b
+  - enabled: 1
     path: Assets/Scenes/Pong circle.unity
     guid: cf77ab49c0464b3469d229743aeefd8e
+  - enabled: 1
+    path: Assets/Scenes/Flappy First Person.unity
+    guid: 7e2e317564102cc4ca147d12fd11e4b9
   m_configObjects: {}
